@@ -45,8 +45,12 @@ class Store extends Model
     return $this->belongsToMany(OurDeal::class, 'our_deal_store', 'store_id', 'our_deal_id')
                 ->where('is_available', 1);
 }
-public function gallery()
+    public function gallery()
     {
         return $this->hasMany(StoreGallery::class, 'store_id');
+    }
+    public function faqs()
+    {
+        return $this->hasMany(Faq::class);
     }
 }

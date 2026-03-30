@@ -20,6 +20,8 @@ use Filament\Tables\Actions\EditAction;
 use Filament\Tables\Actions\DeleteAction;
 use Filament\Tables\Actions\DeleteBulkAction;
 use Filament\Forms\Components\FileUpload;
+use Filament\Forms\Components\RichEditor;
+
 class StoreResource extends Resource
 {
     protected static ?string $model = Store::class;
@@ -50,10 +52,21 @@ class StoreResource extends Resource
                         ->rows(3)
                         ->columnSpan('full'),
 
-                    Textarea::make('description')
+                    RichEditor::make('description')
                         ->label('Store Description')
-                        ->rows(6)
-                        ->columnSpan('full')
+                        ->columnSpan('full')->toolbarButtons([
+                            'bold',
+                            'italic',
+                            'underline',
+                            'strike',
+                            'bulletList',
+                            'orderedList',
+                            'link',
+                            'h2',
+                            'h3',
+                            'blockquote',
+                            'codeBlock',
+                        ])
                         ->required(),
 
                     TextInput::make('order_link')

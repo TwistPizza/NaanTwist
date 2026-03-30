@@ -48,7 +48,7 @@ public function storelocation(Request $request)
         
        $value = str_replace('-', ' ', $slug);
         // Store deals
-        $store = Store::with(['deals', 'schedules', 'gallery'])
+        $store = Store::with(['deals', 'schedules', 'gallery','faqs'])
                   ->where('name', $value)  // slug column should exist in DB
                   ->firstOrFail();
 

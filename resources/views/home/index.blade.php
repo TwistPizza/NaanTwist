@@ -100,11 +100,10 @@
         </div>
 
         <!-- Main Flex -->
-        <div class="flex flex-col lg:flex-row items-center justify-between gap-y-10 lg:gap-16">
+      <div class="flex flex-col lg:flex-row items-center justify-between gap-y-10 lg:gap-16">
 
             <!-- Left Image -->
             <div class="w-full lg:w-[55%] flex justify-center mb-10 lg:mb-0">
-
                 <div class="relative flex justify-center">
 
                     <!-- Glow Background -->
@@ -120,27 +119,33 @@
             </div>
 
             <!-- Right Content -->
-            <div class="w-full lg:w-[45%] text-center lg:text-left">
+            <div class="w-full lg:w-[45%] text-center lg:text-left 
+                        pl-0 lg:pl-6
+                        pr-6 md:pr-10 lg:pr-20 xl:pr-32 2xl:pr-40 
+                        max-w-[600px]">
 
-                <p class="text-gray-600 text-lg lg:text-xl leading-relaxed font-light">
+                <p class="text-gray-800 text-[17px] md:text-lg lg:text-[19px] 
+                        leading-[1.9] tracking-[0.3px] font-normal 
+                        antialiased subpixel-antialiased
+                        max-w-[520px] mx-auto lg:mx-0">
 
                     Welcome to 
-                    <span class="font-bold text-orange-500">Naan Twist</span> —
+                    <span class="font-semibold text-orange-500">Naan Twist</span> —
                     where 
-                    <span class="font-medium text-gray-800">
+                    <span class="font-medium text-gray-900">
                         traditional Indian flavours
                     </span>
                     blend perfectly with
-                    <span class="italic text-orange-400">
+                    <span class="italic text-orange-500">
                         modern culinary creativity
                     </span>.
 
                     Every dish is freshly prepared using
-                    <span class="font-medium">
+                    <span class="font-medium text-gray-900">
                         authentic spices
                     </span>,
                     rich ingredients, and time-honored recipes that celebrate the
-                    <span class="text-gray-800 font-medium">
+                    <span class="text-gray-900 font-medium">
                         true taste of India
                     </span>.
 
@@ -153,14 +158,13 @@
                         signature specials
                     </span>,
                     we transform every meal into a
-                    <span class="font-semibold text-gray-800">
+                    <span class="font-semibold text-gray-900">
                         delightful and unforgettable dining experience
                     </span>.
 
                 </p>
 
             </div>
-
         </div>
     </div>
 </section>

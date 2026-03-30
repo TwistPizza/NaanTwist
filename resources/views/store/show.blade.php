@@ -153,16 +153,22 @@
 
     /* Text side — offwhite card bg */
     .sc-about-text {
-        background: #FAEBD0;
+        background: #ffffff; /* clean white */
         padding: 4rem 3.5rem 4rem 3rem;
-        display: flex; flex-direction: column; justify-content: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
         position: relative;
     }
     /* Gold-to-Red gradient left border */
     .sc-about-text::before {
-        content: ''; position: absolute; left: 0; top: 10%; bottom: 10%;
-        width: 0.5px;
-        background: linear-gradient(to bottom, transparent, #F0D070, #D0232A, transparent);
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 12%;
+        bottom: 12%;
+        width: 2px;
+        background: linear-gradient(to bottom, transparent, #D0232A, transparent);
     }
 
     .sc-about-eyebrow  { display: flex; align-items: center; gap: 10px; margin-bottom: 1.8rem; }
@@ -179,8 +185,12 @@
     @keyframes scDiam  { 0%,100%{box-shadow:0 0 0 0 rgba(240,208,112,.5)} 50%{box-shadow:0 0 0 6px rgba(240,208,112,0)} }
     .sc-divider-diamond{ animation: scDiam 2.5s ease-in-out infinite; }
 
-    .sc-about-body { font-size: 13.5px; color: #A07850; line-height: 1.95; font-weight: 300; margin-bottom: 2.5rem; }
-
+.sc-about-body {
+    font-size: 15px;
+    color: #444; /* darker = more readable */
+    line-height: 1.9;
+    font-weight: 400;
+}
     /* CTA button — Naan Red */
     .sc-about-cta {
         display: inline-flex; align-items: center; gap: 12px;
@@ -205,18 +215,27 @@
         .sc-hero, .sc-about-panel { grid-template-columns: 1fr; }
         .sc-hours-grid { grid-template-columns: repeat(4, 1fr); }
         .sc-about-img { min-height: 280px; }
-        .sc-about-overlay { background: linear-gradient(to bottom, rgba(42,18,5,0) 55%, #FAEBD0 100%); }
+        .sc-about-overlay { background: linear-gradient(to bottom, rgba(42,18,5,0) 55%, #fff 100%); }
         .sc-about-text    { padding: 3rem 2.5rem; }
-        .sc-about-heading { font-size: 42px; }
-        .sc-about-heading em { font-size: 48px; }
+        .sc-about-heading {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 52px;
+            line-height: 1.05;
+            color: #111; /* deep black */
+            font-weight: 400;
+        }
+
+        .sc-about-heading em {
+            color: #D0232A; /* brand red highlight */
+        }
     }
     .sc-lux-divider{
-display:flex;
-align-items:center;
-justify-content:center;
-gap:24px;
-margin:45px 0;
-}
+        display:flex;
+        align-items:center;
+        justify-content:center;
+        gap:24px;
+        margin:45px 0;
+    }
 
 .sc-lux-divider span{
 flex:1;
@@ -299,7 +318,7 @@ transform:rotate(-45deg);
         <div class="sc-wrap">
 
             {{-- ── HERO ── --}}
-            <div class="sc-hero  mb-3">
+            <div class="sc-hero  mb-4">
 
                 {{-- Logo Panel --}}
                 <div class="sc-logo-panel sc-reveal" id="sc-logo-panel">
@@ -374,7 +393,7 @@ transform:rotate(-45deg);
 
                 </div>
             </div>
-            <div class="sc-lux-divider">
+            <!-- <div class="sc-lux-divider">
                 <span></span>
                 <div class="sc-lux-ornament">
                     <svg viewBox="0 0 24 24">
@@ -382,11 +401,11 @@ transform:rotate(-45deg);
                     </svg>
                 </div>
                 <span></span>
-            </div>
+            </div> -->
 
             {{-- ── HOURS ── --}}
             @if($store->schedules->count())
-            <div class="sc-hours-panel sc-reveal  mb-3">
+            <div class="sc-hours-panel sc-reveal  mb-4">
                 <div class="sc-hours-title">Opening Hours</div>
                 <div class="sc-hours-grid">
                     @foreach($days as $index => $day)
@@ -415,7 +434,7 @@ transform:rotate(-45deg);
                 </div>
             </div>
             @endif
-                <div class="sc-lux-divider">
+                <!-- <div class="sc-lux-divider">
                     <span></span>
                     <div class="sc-lux-ornament">
                         <svg viewBox="0 0 24 24">
@@ -423,52 +442,52 @@ transform:rotate(-45deg);
                         </svg>
                     </div>
                     <span></span>
-                </div>
+                </div> -->
             {{-- ── ABOUT ── --}}
             @if($store->description)
-            <div class="sc-about-panel">
+                <div style="padding: 2px; border-radius: 14px; background: linear-gradient(135deg, #F0D070, #D0232A, #F0D070); box-shadow: 0 10px 50px rgba(208, 35, 42, 0.20), 0 4px 15px rgba(240, 208, 112, 0.25), 0 2px 8px rgba(0,0,0,0.12);">
+                <div class="sc-about-panel" style="border-radius: 12px; overflow: hidden; background: #fff;">
 
-                {{-- Image Left --}}
-                <div class="sc-about-img sc-reveal-l" id="sc-about-img">
-                    @if($store->image)
-                        <img src="{{ asset('storage/' . $store->image) }}" alt="{{ $store->name }}">
-                    @endif
-                    <div class="sc-about-overlay"></div>
-                    {{-- Ornament: Naan Gold outer, Red inner --}}
-                    <svg class="sc-about-ornament" viewBox="0 0 46 46" fill="none">
-                        <rect x="1" y="1" width="44" height="44" stroke="#F0D070" stroke-width="0.7"/>
-                        <rect x="6" y="6" width="34" height="34" stroke="#D0232A" stroke-width="0.4"/>
-                        <circle cx="23" cy="23" r="3.5" stroke="#F0D070" stroke-width="0.7"/>
-                        <line x1="23" y1="1" x2="23" y2="10" stroke="#F0D070" stroke-width="0.7"/>
-                        <line x1="1"  y1="23" x2="10" y2="23" stroke="#F0D070" stroke-width="0.7"/>
-                        <line x1="36" y1="23" x2="45" y2="23" stroke="#F0D070" stroke-width="0.7"/>
-                        <line x1="23" y1="36" x2="23" y2="45" stroke="#F0D070" stroke-width="0.7"/>
-                    </svg>
-                    <div class="sc-about-bottom">
-                        <div class="sc-about-est">Established</div>
-                        <div class="sc-about-year">{{ $store->created_at->format('Y') }}</div>
+                    {{-- Image Left --}}
+                    <div class="sc-about-img sc-reveal-l" id="sc-about-img">
+                        @if($store->image)
+                            <img src="{{ asset('storage/' . $store->image) }}" alt="{{ $store->name }}">
+                        @endif
+                        <div class="sc-about-overlay"></div>
+                        <svg class="sc-about-ornament" viewBox="0 0 46 46" fill="none">
+                            <rect x="1" y="1" width="44" height="44" stroke="#F0D070" stroke-width="0.7"/>
+                            <rect x="6" y="6" width="34" height="34" stroke="#D0232A" stroke-width="0.4"/>
+                            <circle cx="23" cy="23" r="3.5" stroke="#F0D070" stroke-width="0.7"/>
+                            <line x1="23" y1="1" x2="23" y2="10" stroke="#F0D070" stroke-width="0.7"/>
+                            <line x1="1"  y1="23" x2="10" y2="23" stroke="#F0D070" stroke-width="0.7"/>
+                            <line x1="36" y1="23" x2="45" y2="23" stroke="#F0D070" stroke-width="0.7"/>
+                            <line x1="23" y1="36" x2="23" y2="45" stroke="#F0D070" stroke-width="0.7"/>
+                        </svg>
+                        <div class="sc-about-bottom">
+                            <div class="sc-about-est">Established</div>
+                            <div class="sc-about-year">{{ $store->created_at->format('Y') }}</div>
+                        </div>
                     </div>
+
+                    {{-- Text Right --}}
+                    <div class="sc-about-text sc-reveal-r" id="sc-about-txt">
+                        <div class="sc-about-eyebrow">
+                            <div class="sc-eyebrow-line" id="sc-eline"></div>
+                            <span class="sc-eyebrow-txt">{{ $store->name }}</span>
+                        </div>
+                        <div class="sc-about-heading sc-reveal sc-d1">
+                            A little<em>about us.</em>
+                        </div>
+                        <div class="sc-about-divider">
+                            <div class="sc-divider-line"></div>
+                            <div class="sc-divider-diamond"></div>
+                        </div>
+                        <p class="sc-about-body sc-reveal sc-d2">{!! $store->description !!}</p>
+                    </div>
+
                 </div>
-
-                {{-- Text Right --}}
-                <div class="sc-about-text sc-reveal-r" id="sc-about-txt">
-                    <div class="sc-about-eyebrow">
-                        <div class="sc-eyebrow-line" id="sc-eline"></div>
-                        <span class="sc-eyebrow-txt">{{ $store->name }}</span>
-                    </div>
-                    <div class="sc-about-heading sc-reveal sc-d1">
-                        A little<em>about us.</em>
-                    </div>
-                    <div class="sc-about-divider">
-                        <div class="sc-divider-line"></div>
-                        <div class="sc-divider-diamond"></div>
-                    </div>
-                    <p class="sc-about-body sc-reveal sc-d2">{{ $store->description }}</p>
-                   
                 </div>
-
-            </div>
-            @endif
+                @endif
 
         </div>
     </div>
@@ -600,6 +619,10 @@ transform:rotate(-45deg);
 </section>
 @endif
 
+
+
+
+
 {{-- ── Sign-Up for Exclusive Deals ── --}}
 <section class="bg-fixed sm:py-[100px] py-[40px] relative z-[2] after:content-[''] after:absolute after:z-[-1] after:bg-black-blur after:opacity-100 after:w-full after:h-full after:top-0 after:left-0 after:backdrop-blur-[6px]"
     style="background-image: url('{{ asset('images/background/pic1.png') }}')">
@@ -643,6 +666,95 @@ transform:rotate(-45deg);
         </form>
     </div>
 </section>
+
+
+@if($store->faqs->count())
+<section class="sm:py-[100px] py-[40px] relative overflow-hidden mb-5">
+    <div class="container">
+
+        <!-- Heading -->
+        <div class="2xl:mb-[60px] mb-[40px] text-center">
+            <h2 class="font-lobster">FAQs</h2>
+        </div>
+
+        <!-- FAQ List -->
+        <div class="max-w-[800px] mx-auto">
+            @foreach($store->faqs as $faq)
+            <div class="faq-item shadow-[0_15px_55px_rgba(35,35,35,0.15)] rounded-[10px] bg-white overflow-hidden mb-4">
+
+                <!-- Question -->
+                <button
+                    type="button"
+                    class="w-full flex items-center justify-between px-6 py-5 text-left"
+                    onclick="toggleFaq(this)"
+                >
+                    <span class="font-semibold text-gray-800 text-[16px] pr-4">
+                        {{ $faq->question }}
+                    </span>
+
+                    <!-- Icon -->
+                    <span class="faq-icon flex-shrink-0 w-10 h-10 rounded-full bg-primary text-white flex items-center justify-center shadow-md">
+                        <i class="faq-plus-icon fa fa-plus text-[16px]"></i>
+                    </span>
+                </button>
+
+                <!-- Answer -->
+                <div class="faq-answer" style="max-height: 0; overflow: hidden; transition: max-height 0.5s ease;">
+                    <div class="px-6 pb-5">
+                        <div class="border-t border-gray-100 pt-4">
+                               {!! $faq->answer !!}
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            @endforeach
+        </div>
+
+    </div>
+</section>
+
+<script>
+function toggleFaq(btn) {
+    const item = btn.closest('.faq-item');
+    const answer = item.querySelector('.faq-answer');
+    const icon = item.querySelector('.faq-plus-icon');
+    const allItems = document.querySelectorAll('.faq-item');
+
+    const isOpen = item.classList.contains('faq-open');
+
+    // Close all
+    allItems.forEach(function(other) {
+        other.querySelector('.faq-answer').style.maxHeight = '0';
+        const i = other.querySelector('.faq-plus-icon');
+        i.classList.remove('fa-minus');
+        i.classList.add('fa-plus');
+        other.classList.remove('faq-open');
+    });
+
+    // Open current only if it was closed
+    if (!isOpen) {
+        answer.style.maxHeight = answer.scrollHeight + 'px';
+        icon.classList.remove('fa-plus');
+        icon.classList.add('fa-minus');
+        item.classList.add('faq-open');
+    }
+}
+
+// Auto open first FAQ on page load
+document.addEventListener('DOMContentLoaded', function() {
+    const firstItem = document.querySelector('.faq-item');
+    if (firstItem) {
+        const firstAnswer = firstItem.querySelector('.faq-answer');
+        const firstIcon = firstItem.querySelector('.faq-plus-icon');
+        firstAnswer.style.maxHeight = firstAnswer.scrollHeight + 'px';
+        firstIcon.classList.remove('fa-plus');
+        firstIcon.classList.add('fa-minus');
+        firstItem.classList.add('faq-open');
+    }
+});
+</script>
+@endif
 
 {{-- ── Google Map ── --}}
 @if($store->map_link)
